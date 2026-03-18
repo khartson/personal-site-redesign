@@ -1,0 +1,26 @@
+@import "tailwindcss";
+@theme {
+    --color-primary: #0070f3;
+    --color-background-dark: #000000;
+
+    --font-display: "Inter", "sans-serif"; 
+
+    --radius: 0.5rem; 
+    --radius-lg: 0.75rem; 
+    --radius-xl: 1rem; 
+    --radius-full: 9999px; 
+
+    @keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+    }
+
+    @keyframes blink {
+    from, to { border-right-color: transparent; }
+    50% { border-right-color: orange; }
+    }
+
+    --animate-typewriter: 
+    typing 2s steps(20) forwards, 
+    blink .5s step-end infinite;
+}
