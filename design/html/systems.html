@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#38bdf8",
+                        "background-dark": "#000000",
+                        "accent-blue": "#0ea5e9",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .node-glow {
+            box-shadow: 0 0 15px rgba(14, 165, 233, 0.1);
+        }
+        .node-glow:hover {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.3);
+            border-color: #38bdf8;
+        }
+        .active-glow {
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
+            border-color: #38bdf8 !important;
+        }
+        .skill-node.active .icon-container {
+            box-shadow: 0 0 25px rgba(14, 165, 233, 0.4);
+            border-color: #38bdf8;
+        }
+        .skill-node.active .icon-container span {
+            color: #38bdf8;
+        }
+        .skill-node.active h3 {
+            color: #f1f5f9;
+        }
+        [data-content] {
+            display: none;
+        }
+        [data-content].active {
+            display: block;
+            animation: fadeIn 0.4s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-400 min-h-screen relative overflow-x-hidden selection:bg-accent-blue/30">
+<div class="relative z-10 flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between border-b border-white/5 px-6 py-4 lg:px-20">
+<div class="flex items-center gap-3">
+<div class="text-accent-blue">
+<span class="material-symbols-outlined text-2xl">autopilot_cluster</span>
+</div>
+<h2 class="text-sm font-medium tracking-widest uppercase text-slate-200">Systems Engineering Journey</h2>
+</div>
+<div class="flex gap-4">
+<button class="text-slate-500 hover:text-accent-blue transition-colors">
+<span class="material-symbols-outlined text-xl">rocket_launch</span>
+</button>
+<button class="text-slate-500 hover:text-accent-blue transition-colors">
+<span class="material-symbols-outlined text-xl">hub</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center px-6 py-12 lg:px-20">
+<div class="max-w-6xl w-full text-center mb-16 lg:mb-24">
+<h1 class="text-3xl lg:text-4xl font-light mb-4 text-slate-100 tracking-tight">Kyle Hartson's Expertise Map</h1>
+<p class="text-slate-500 text-sm max-w-xl mx-auto font-light leading-relaxed">A minimalist progression through core infrastructure to enterprise workflow automation.</p>
+</div>
+<!-- Skill Roadmap Container -->
+<div class="w-full flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-0 relative max-w-5xl mx-auto mb-20">
+<!-- Connection Line (Desktop) -->
+<div class="hidden lg:block absolute top-[28px] left-0 w-full h-[1px] bg-white/10 -z-10"></div>
+<!-- Skill Node 1 -->
+<button class="skill-node flex flex-col items-center group w-full lg:w-32 focus:outline-none" onclick="showDetails('infra')">
+<div class="icon-container node-glow w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 transition-all duration-300">
+<span class="material-symbols-outlined text-slate-500 text-xl group-hover:text-accent-blue transition-colors">terminal</span>
+</div>
+<div class="text-center">
+<h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 transition-colors">Infrastructure</h3>
+<p class="text-[10px] text-slate-600">Admin</p>
+</div>
+</button>
+<div class="lg:hidden h-8 w-[1px] bg-white/10"></div>
+<!-- Skill Node 2 -->
+<button class="skill-node flex flex-col items-center group w-full lg:w-32 focus:outline-none" onclick="showDetails('identity')">
+<div class="icon-container node-glow w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 transition-all duration-300">
+<span class="material-symbols-outlined text-slate-500 text-xl group-hover:text-accent-blue transition-colors">fingerprint</span>
+</div>
+<div class="text-center">
+<h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 transition-colors">Identity</h3>
+<p class="text-[10px] text-slate-600">Hybrid AD</p>
+</div>
+</button>
+<div class="lg:hidden h-8 w-[1px] bg-white/10"></div>
+<!-- Skill Node 3 (Active by default) -->
+<button class="skill-node active flex flex-col items-center group w-full lg:w-32 focus:outline-none" onclick="showDetails('gov')">
+<div class="icon-container w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 transition-all duration-300 relative">
+<span class="material-symbols-outlined text-slate-500 text-xl group-hover:text-accent-blue transition-colors">gpp_maybe</span>
+</div>
+<div class="text-center">
+<h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 transition-colors">Gov Cloud</h3>
+<p class="text-[10px] text-slate-600">GCC High</p>
+</div>
+</button>
+<div class="lg:hidden h-8 w-[1px] bg-white/10"></div>
+<!-- Skill Node 4 -->
+<button class="skill-node flex flex-col items-center group w-full lg:w-32 focus:outline-none" onclick="showDetails('obs')">
+<div class="icon-container node-glow w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 transition-all duration-300">
+<span class="material-symbols-outlined text-slate-500 text-xl group-hover:text-accent-blue transition-colors">query_stats</span>
+</div>
+<div class="text-center">
+<h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 transition-colors">Observability</h3>
+<p class="text-[10px] text-slate-600">Splunk</p>
+</div>
+</button>
+<div class="lg:hidden h-8 w-[1px] bg-white/10"></div>
+<!-- Skill Node 5 -->
+<button class="skill-node flex flex-col items-center group w-full lg:w-32 focus:outline-none" onclick="showDetails('auto')">
+<div class="icon-container node-glow w-14 h-14 rounded-full bg-black border border-white/10 flex items-center justify-center mb-6 transition-all duration-300">
+<span class="material-symbols-outlined text-slate-500 text-xl group-hover:text-accent-blue transition-colors">schema</span>
+</div>
+<div class="text-center">
+<h3 class="text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1 transition-colors">Automation</h3>
+<p class="text-[10px] text-slate-600">Workflow</p>
+</div>
+</button>
+</div>
+<!-- Dynamic Detail Area -->
+<div class="w-full max-w-2xl bg-white/[0.02] border border-white/5 rounded-xl p-8 lg:p-12 min-h-[220px] flex items-center justify-center relative overflow-hidden">
+<!-- Background Decoration -->
+<div class="absolute -right-20 -top-20 w-64 h-64 bg-accent-blue/5 blur-[100px] rounded-full"></div>
+<div class="relative z-10 w-full">
+<!-- Infrastructure Content -->
+<div class="text-center" data-content="infra">
+<h4 class="text-accent-blue text-xs font-bold uppercase tracking-widest mb-4">Core Infrastructure &amp; OS</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Deep expertise in enterprise-grade Windows and Linux administration. Optimized high-availability server clusters and managed full-stack infrastructure for critical business applications.</p>
+<div class="flex justify-center gap-4">
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Proxmox</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">PowerShell</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Bash</span>
+</div>
+</div>
+<!-- Identity Content -->
+<div class="text-center" data-content="identity">
+<h4 class="text-accent-blue text-xs font-bold uppercase tracking-widest mb-4">Identity Architecture</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Architecting seamless synchronization between on-premise Active Directory and Microsoft Entra ID. Focused on Zero Trust security frameworks and global IAM strategies.</p>
+<div class="flex justify-center gap-4">
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">OAuth 2.0</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">SAML</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">RBAC</span>
+</div>
+</div>
+<!-- Gov Cloud Content (Default) -->
+<div class="active text-center" data-content="gov">
+<h4 class="text-accent-blue text-xs font-bold uppercase tracking-widest mb-4">Government Cloud &amp; Compliance</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Specializing in GCC High Azure environments for defense and aerospace. Navigating complex CMMC and ITAR compliance requirements while maintaining operational agility.</p>
+<div class="flex justify-center gap-4">
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Azure Govt</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">CMMC 2.0</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">NIST 800-171</span>
+</div>
+</div>
+<!-- Observability Content -->
+<div class="text-center" data-content="obs">
+<h4 class="text-accent-blue text-xs font-bold uppercase tracking-widest mb-4">Enterprise Observability</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Building robust telemetry pipelines using Splunk and NodeRED. Transforming raw system logs into actionable intelligence and real-time security dashboards.</p>
+<div class="flex justify-center gap-4">
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">SIEM</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Splunk SPL</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Grafana</span>
+</div>
+</div>
+<!-- Automation Content -->
+<div class="text-center" data-content="auto">
+<h4 class="text-accent-blue text-xs font-bold uppercase tracking-widest mb-4">Workflow Automation</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-6 font-light">Engineering enterprise-scale automation for lifecycle management. Reduced operational overhead by 40% through custom Python integrations and serverless functions.</p>
+<div class="flex justify-center gap-4">
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">Python</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">API Ops</span>
+<span class="text-[10px] border border-white/10 px-3 py-1 rounded-full text-slate-500">DevOps</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="px-6 py-10 border-t border-white/5 text-center">
+<p class="text-[10px] uppercase tracking-[0.2em] text-slate-700 font-medium">© 2024 Kyle Hartson • Systems Engineering • Minimalist Map</p>
+</footer>
+</div>
+<script>
+        function showDetails(skillId) {
+            // Update buttons
+            document.querySelectorAll('.skill-node').forEach(node => {
+                node.classList.remove('active');
+            });
+            event.currentTarget.classList.add('active');
+
+            // Update content
+            document.querySelectorAll('[data-content]').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.querySelector(`[data-content="${skillId}"]`).classList.add('active');
+        }
+    </script>
+</body></html>

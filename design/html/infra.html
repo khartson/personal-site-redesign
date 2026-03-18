@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Infrastructure &amp; Automation Mastery | Skill Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#00d4ff",
+                        "background-dark": "#000000",
+                        "accent-muted": "#006b81",
+                        "border-muted": "#1a1a1a"
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #000000;
+        }
+        .node-glow {
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.05);
+        }
+        .node-glow-active {
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+            border-color: #00d4ff !important;
+        }
+        .node-glow-active span {
+            color: #00d4ff !important;
+        }
+        .line-muted {
+            background-color: #1a1a1a;
+        }
+        .skill-node {
+            cursor: pointer;
+        }
+        /* Custom scrollbar for the horizontal flow */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-400 min-h-screen relative overflow-x-hidden">
+<div class="relative flex flex-col min-h-screen">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between px-8 py-6 border-b border-border-muted bg-black sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="flex items-center justify-center size-8 border border-primary/20 text-primary">
+<span class="material-symbols-outlined text-xl">hub</span>
+</div>
+<div>
+<h2 class="text-xs font-bold tracking-[0.2em] uppercase text-white">Kyle Hartson</h2>
+<p class="text-[10px] font-medium text-primary tracking-wider">CLOUD ARCHITECT</p>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-5 py-2 border border-white text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all">
+                View Resume
+            </button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center px-4 py-20">
+<!-- Hero Title -->
+<div class="text-center mb-24 max-w-2xl">
+<h1 class="text-3xl md:text-4xl font-light tracking-tight mb-6 text-white">
+                Infrastructure &amp; Automation
+            </h1>
+<div class="h-px w-12 bg-primary mx-auto mb-6"></div>
+<p class="text-slate-500 text-sm uppercase tracking-widest leading-loose">
+                A linear progression of technical mastery
+            </p>
+</div>
+<!-- Skill Map Flow -->
+<div class="w-full max-w-6xl overflow-x-auto pb-12 hide-scrollbar">
+<div class="flex items-center justify-between min-w-[1000px] px-12 relative">
+<!-- Connection Line -->
+<div class="absolute top-[40px] left-12 right-12 h-[1px] line-muted"></div>
+<!-- Node 1: Linux -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('linux')">
+<div class="size-20 rounded-full border border-primary flex items-center justify-center bg-black node-glow-active transition-all" id="node-linux">
+<span class="material-symbols-outlined text-2xl text-primary">terminal</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-white uppercase tracking-widest">Linux</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Foundations</p>
+</div>
+</div>
+<!-- Node 2: Proxmox -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('proxmox')">
+<div class="size-20 rounded-full border border-border-muted flex items-center justify-center bg-black node-glow group-hover:border-primary/50 transition-all" id="node-proxmox">
+<span class="material-symbols-outlined text-2xl text-slate-500 group-hover:text-primary/70 transition-colors">layers</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Proxmox</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Virtualization</p>
+</div>
+</div>
+<!-- Node 3: pfSense -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('pfsense')">
+<div class="size-20 rounded-full border border-border-muted flex items-center justify-center bg-black node-glow group-hover:border-primary/50 transition-all" id="node-pfsense">
+<span class="material-symbols-outlined text-2xl text-slate-500 group-hover:text-primary/70 transition-colors">router</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">pfSense</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Networking</p>
+</div>
+</div>
+<!-- Node 4: Terraform -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('terraform')">
+<div class="size-20 rounded-full border border-border-muted flex items-center justify-center bg-black node-glow group-hover:border-primary/50 transition-all" id="node-terraform">
+<span class="material-symbols-outlined text-2xl text-slate-500 group-hover:text-primary/70 transition-colors">cloud_sync</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Terraform</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Provisioning</p>
+</div>
+</div>
+<!-- Node 5: Ansible -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('ansible')">
+<div class="size-20 rounded-full border border-border-muted flex items-center justify-center bg-black node-glow group-hover:border-primary/50 transition-all" id="node-ansible">
+<span class="material-symbols-outlined text-2xl text-slate-500 group-hover:text-primary/70 transition-colors">settings_suggest</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Ansible</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Configuration</p>
+</div>
+</div>
+<!-- Node 6: Tailscale -->
+<div class="skill-node flex flex-col items-center gap-8 relative z-10 group" onclick="selectNode('tailscale')">
+<div class="size-20 rounded-full border border-border-muted flex items-center justify-center bg-black node-glow group-hover:border-primary/50 transition-all" id="node-tailscale">
+<span class="material-symbols-outlined text-2xl text-slate-500 group-hover:text-primary/70 transition-colors">security</span>
+</div>
+<div class="text-center">
+<h3 class="font-bold text-xs text-slate-400 uppercase tracking-widest">Tailscale</h3>
+<p class="text-[10px] text-slate-600 mt-2 uppercase">Zero Trust</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Dynamic Content Area -->
+<div class="w-full max-w-3xl mt-12 transition-all duration-500 opacity-100" id="content-area">
+<div class="border-t border-border-muted pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12">
+<div class="space-y-4">
+<h4 class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">General Overview</h4>
+<p class="text-xs text-white leading-relaxed uppercase tracking-wider" id="content-overview">Deep expertise in RHEL and Debian-based systems. Expert-level CLI proficiency and kernel tuning for production workloads.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Professional Use</h4>
+<p class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider" id="content-professional">Architected high-availability clusters for Fortune 500 financial services with strict compliance requirements.</p>
+</div>
+<div class="space-y-4">
+<h4 class="text-[10px] font-bold text-primary uppercase tracking-[0.2em]">Project/Link Description</h4>
+<div class="group cursor-pointer">
+<p class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider mb-2" id="content-project">Custom Linux kernel optimization toolkit for edge computing latency reduction.</p>
+<a class="text-[9px] text-primary border-b border-primary/30 pb-0.5 uppercase tracking-widest hover:border-primary transition-all" href="#">Explore Repository</a>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-auto py-12 px-8 text-center border-t border-border-muted bg-black">
+<p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">© 2024 Kyle Hartson — Pure Infrastructure</p>
+<div class="flex justify-center gap-8 mt-8">
+<a class="text-slate-600 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">alternate_email</span>
+</a>
+<a class="text-slate-600 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined text-lg">data_object</span>
+</a>
+</div>
+</footer>
+</div>
+<script>
+        const skillData = {
+            linux: {
+                overview: "Deep expertise in RHEL and Debian-based systems. Expert-level CLI proficiency and kernel tuning for production workloads.",
+                professional: "Architected high-availability clusters for Fortune 500 financial services with strict compliance requirements.",
+                project: "Custom Linux kernel optimization toolkit for edge computing latency reduction."
+            },
+            proxmox: {
+                overview: "Advanced implementation of hyper-converged infrastructure using Proxmox VE and Ceph storage backends.",
+                professional: "Migrated legacy on-premise hardware to a virtualized private cloud environment, reducing footprint by 60%.",
+                project: "Automated container deployment pipeline using Proxmox API and custom shell scripting."
+            },
+            pfsense: {
+                overview: "Hardened network architecture featuring complex VLAN segmentation, Suricata IDS/IPS, and HAProxy load balancing.",
+                professional: "Designed secure multi-site VPN architecture for distributed engineering teams using OpenVPN and WireGuard.",
+                project: "Network monitoring dashboard integrated with pfSense logs for real-time threat detection."
+            },
+            terraform: {
+                overview: "Infrastructure as Code (IaC) mastery for multi-cloud provisioning and state management.",
+                professional: "Managed global infrastructure across AWS and GCP using modular Terraform structures and CI/CD pipelines.",
+                project: "Universal cloud module library for standardized resource deployment across hybrid environments."
+            },
+            ansible: {
+                overview: "Complex configuration management and application deployment automation at scale.",
+                professional: "Automated OS hardening and software updates for a fleet of over 500+ production servers.",
+                project: "Self-healing infrastructure playbook that automatically remediates common service failures."
+            },
+            tailscale: {
+                overview: "Zero Trust networking implementation using WireGuard-based mesh VPN technology.",
+                professional: "Eliminated traditional bastion hosts in favor of secure, identity-based access for remote DevOps staff.",
+                project: "Automated node authorization flow integrated with Okta for seamless enterprise onboarding."
+            }
+        };
+
+        function selectNode(skillId) {
+            const contentArea = document.getElementById('content-area');
+            const overview = document.getElementById('content-overview');
+            const professional = document.getElementById('content-professional');
+            const project = document.getElementById('content-project');
+            
+            // Fade out
+            contentArea.classList.remove('opacity-100');
+            contentArea.classList.add('opacity-0');
+
+            // Reset all nodes to inactive
+            document.querySelectorAll('.skill-node div[id^="node-"]').forEach(node => {
+                node.classList.remove('node-glow-active', 'border-primary');
+                node.classList.add('node-glow', 'border-border-muted');
+                node.querySelector('span').classList.remove('text-primary');
+                node.querySelector('span').classList.add('text-slate-500');
+            });
+
+            // Set clicked node to active
+            const activeNode = document.getElementById(`node-${skillId}`);
+            activeNode.classList.add('node-glow-active');
+            activeNode.classList.remove('node-glow', 'border-border-muted');
+            activeNode.querySelector('span').classList.remove('text-slate-500');
+            activeNode.querySelector('span').classList.add('text-primary');
+
+            // Update content and fade in
+            setTimeout(() => {
+                const data = skillData[skillId];
+                overview.textContent = data.overview;
+                professional.textContent = data.professional;
+                project.textContent = data.project;
+                
+                contentArea.classList.remove('opacity-0');
+                contentArea.classList.add('opacity-100');
+            }, 300);
+        }
+    </script>
+</body></html>

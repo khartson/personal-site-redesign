@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cosmos Portfolio | Minimalist Professional Universe</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0070f3",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.75rem",
+                        "xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-black font-display text-white antialiased overflow-x-hidden">
+<div class="relative min-h-screen flex flex-col items-center justify-center">
+<!-- Top Navigation -->
+<header class="absolute top-0 left-0 right-0 z-10 flex items-center justify-center px-6 py-12">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-2xl">auto_awesome</span>
+<h2 class="text-sm font-medium tracking-[0.2em] uppercase">Cosmos Portfolio</h2>
+</div>
+</header>
+<!-- Main Content -->
+<main class="relative z-10 flex flex-col items-center justify-center px-6 py-20 text-center max-w-4xl mx-auto">
+<div class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">
+            Orbiting New Challenges
+        </div>
+<h1 class="text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8">
+            Crafting Digital Universes.
+        </h1>
+<p class="text-zinc-500 text-sm md:text-base max-w-md mx-auto leading-relaxed mb-16">
+            A minimalist map of my professional journey and technical expertise.
+        </p>
+<div class="flex flex-col sm:flex-row gap-8 justify-center w-full max-w-md">
+<button class="flex items-center justify-center gap-3 flex-1 bg-primary text-white h-14 px-8 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)]">
+<span>Explore My Skills</span>
+<span class="material-symbols-outlined text-lg">rocket_launch</span>
+</button>
+<button class="flex items-center justify-center gap-3 flex-1 text-zinc-400 hover:text-white h-14 px-8 rounded-full font-semibold transition-all">
+<span>Intro &amp; Socials</span>
+<span class="material-symbols-outlined text-lg">person</span>
+</button>
+</div>
+</main>
+<!-- Social Links Footer -->
+<footer class="absolute bottom-12 flex gap-12 text-zinc-600 text-xs font-medium tracking-widest uppercase z-10">
+<a class="hover:text-white transition-colors" href="#">GitHub</a>
+<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="hover:text-white transition-colors" href="#">Resume</a>
+</footer>
+</div>
+</body></html>

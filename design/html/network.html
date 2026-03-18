@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kyle Hartson - Network &amp; Security Architecture</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0ea5e9",
+                        "accent-muted": "#075985",
+                        "background-dark": "#000000",
+                        "border-muted": "#1e293b",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .node-glow-active {
+            box-shadow: 0 0 12px rgba(14, 165, 233, 0.3);
+        }
+        .node-glow-muted {
+            box-shadow: 0 0 8px rgba(30, 41, 59, 0.2);
+        }
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .scrollbar-hide {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+        .detail-pane {
+            display: none;
+        }
+        .group:hover .detail-pane {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-background-dark font-display text-slate-400 min-h-screen relative overflow-x-hidden selection:bg-primary/30">
+<div class="relative flex min-h-screen flex-col">
+<!-- Top Nav Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-white/5 px-6 md:px-10 py-5 bg-black sticky top-0 z-50">
+<div class="flex items-center gap-3">
+<div class="size-6 text-primary flex items-center justify-center">
+<span class="material-symbols-outlined text-2xl">hub</span>
+</div>
+<h2 class="text-sm font-medium uppercase tracking-widest text-slate-200">Network &amp; Security Architecture</h2>
+</div>
+<div class="flex gap-4">
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">star</span>
+</button>
+<button class="text-slate-500 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">share</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-16 md:py-24">
+<!-- Hero Title -->
+<div class="text-center mb-32 max-w-2xl">
+<h1 class="text-slate-100 text-3xl md:text-4xl font-light leading-tight mb-4 tracking-tight">
+                Network &amp; Security <span class="text-primary font-normal">Concentration</span>
+</h1>
+<p class="text-slate-500 text-sm tracking-wide font-light max-w-md mx-auto">Ultra-minimal visualization of technical mastery. Hover nodes for architectural context.</p>
+</div>
+<!-- Horizontal Flow Container -->
+<div class="w-full max-w-7xl overflow-x-auto pb-16 scrollbar-hide">
+<div class="flex items-start justify-between min-w-[1100px] px-12 relative">
+<!-- Connection Line (Muted) -->
+<div class="absolute top-6 left-0 w-full h-[1px] bg-slate-800 z-0"></div>
+<!-- Node 1: Layer 1-3 -->
+<div class="flex flex-col items-center gap-6 relative z-10 w-56 group">
+<div class="size-12 rounded-full bg-black border border-slate-700 node-glow-muted flex items-center justify-center text-slate-600 transition-all duration-300 group-hover:border-primary group-hover:text-primary group-hover:scale-110">
+<span class="material-symbols-outlined text-xl">dangerous</span>
+</div>
+<div class="text-center">
+<p class="text-slate-300 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">Layer 1-3 Diagnostics</p>
+<!-- Dynamic Detail Pane -->
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+<p class="text-slate-500 text-[11px] leading-relaxed font-light border-t border-white/10 pt-4 px-2">
+                                Deep packet inspection, physical layer signal analysis, and complex routing protocol optimization (OSPF/BGP) for mission-critical backbones.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Node 2: VLAN/QoS -->
+<div class="flex flex-col items-center gap-6 relative z-10 w-56 group">
+<div class="size-12 rounded-full bg-black border border-slate-700 node-glow-muted flex items-center justify-center text-slate-600 transition-all duration-300 group-hover:border-primary group-hover:text-primary group-hover:scale-110">
+<span class="material-symbols-outlined text-xl">terminal</span>
+</div>
+<div class="text-center">
+<p class="text-slate-300 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">VLAN/QoS</p>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+<p class="text-slate-500 text-[11px] leading-relaxed font-light border-t border-white/10 pt-4 px-2">
+                                Advanced traffic shaping and logical segmentation strategies to ensure ultra-low latency for real-time application delivery.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Node 3: AVoIP (Active Focus) -->
+<div class="flex flex-col items-center gap-6 relative z-10 w-56 group">
+<div class="size-12 rounded-full bg-black border border-primary node-glow-active flex items-center justify-center text-primary transition-all duration-300 group-hover:scale-110">
+<span class="material-symbols-outlined text-xl">settings_input_component</span>
+</div>
+<div class="text-center">
+<p class="text-slate-100 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">AVoIP Architectures</p>
+<div class="mt-4 opacity-100 transition-opacity duration-500 pointer-events-none">
+<p class="text-slate-400 text-[11px] leading-relaxed font-light border-t border-primary/30 pt-4 px-2">
+                                Implementation of enterprise-grade SDVoE and Dante systems, leveraging IGMP snooping and multicast management at scale.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Node 4: Compliance -->
+<div class="flex flex-col items-center gap-6 relative z-10 w-56 group">
+<div class="size-12 rounded-full bg-black border border-slate-700 node-glow-muted flex items-center justify-center text-slate-600 transition-all duration-300 group-hover:border-primary group-hover:text-primary group-hover:scale-110">
+<span class="material-symbols-outlined text-xl">gavel</span>
+</div>
+<div class="text-center">
+<p class="text-slate-300 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">HIPAA/CMMC 2.0</p>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+<p class="text-slate-500 text-[11px] leading-relaxed font-light border-t border-white/10 pt-4 px-2">
+                                Aligning infrastructure with NIST 800-171 standards and ensuring absolute data integrity for healthcare and defense environments.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Node 5: Zero Trust -->
+<div class="flex flex-col items-center gap-6 relative z-10 w-56 group">
+<div class="size-12 rounded-full bg-black border border-slate-700 node-glow-muted flex items-center justify-center text-slate-600 transition-all duration-300 group-hover:border-primary group-hover:text-primary group-hover:scale-110">
+<span class="material-symbols-outlined text-xl">shield_person</span>
+</div>
+<div class="text-center">
+<p class="text-slate-300 text-[10px] font-bold uppercase tracking-widest mb-1 group-hover:text-primary transition-colors">Zero Trust</p>
+<div class="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+<p class="text-slate-500 text-[11px] leading-relaxed font-light border-t border-white/10 pt-4 px-2">
+                                Identity-centric security perimeters, MFA integration, and micro-segmentation to eliminate the concept of internal "trust".
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Call to Action -->
+<div class="mt-12 flex flex-col items-center">
+<a class="text-[10px] uppercase tracking-[0.2em] text-slate-500 hover:text-primary transition-colors flex items-center gap-4 group border border-white/5 px-8 py-3 rounded-full bg-white/[0.02]" href="#">
+                Explore Complete Portfolio
+                <span class="material-symbols-outlined text-xs transition-transform group-hover:translate-x-1">arrow_forward</span>
+</a>
+</div>
+</main>
+<!-- Footer -->
+<footer class="p-8 flex justify-center border-t border-white/5 bg-black">
+<div class="flex gap-10">
+<button class="text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">public</span>
+</button>
+<button class="text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">analytics</span>
+</button>
+<button class="text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">visibility</span>
+</button>
+<button class="text-slate-600 hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-xl">help</span>
+</button>
+</div>
+</footer>
+</div>
+</body></html>
