@@ -1,0 +1,100 @@
+---
+import RoadmapOverviewMount from "./RoadmapOverviewMount.astro";
+
+type Node = {
+	id: string;
+	label: string;
+	subtitle: string;
+	icon: string;
+	context?: string;
+	overview: string;
+	overviewBullets?: string[];
+	professional: string;
+	project: string;
+};
+
+interface Props {
+	nodes: Node[];
+	defaultActiveId: string;
+	projectLinkLabel?: string;
+	projectLinkHref?: string;
+}
+
+const {
+	nodes,
+	defaultActiveId,
+	projectLinkLabel = "Explore repository",
+	projectLinkHref = "#",
+} = Astro.props;
+
+const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
+---
+
+<div
+	class="w-full max-w-3xl mt-12 transition-all duration-500 opacity-100"
+	id="roadmap-content-area"
+	aria-live="polite"
+>
+	<div
+		class="border-t border-border-muted pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+	>
+		<div class="space-y-4">
+			<h4
+				class="text-[10px] font-bold text-roadmap-primary uppercase tracking-[0.2em]"
+			>
+				General overview
+			</h4>
+			<RoadmapOverviewMount
+				overview={initial.overview}
+				overviewBullets={initial.overviewBullets}
+			/>
+			<p
+				id="roadmap-content-context"
+				class:list={[
+					"text-[10px] text-slate-600 leading-relaxed uppercase tracking-[0.2em] mt-3",
+					!initial.context?.trim() && "hidden",
+				]}
+			>
+				{initial.context ?? ""}
+			</p>
+		</div>
+		<div class="space-y-4">
+			<h4
+				class="text-[10px] font-bold text-roadmap-primary uppercase tracking-[0.2em]"
+			>
+				Professional use
+			</h4>
+			<p
+				class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider"
+				id="roadmap-content-professional"
+			>
+				{initial.professional}
+			</p>
+		</div>
+		<div class="space-y-4">
+			<h4
+				class="text-[10px] font-bold text-roadmap-primary uppercase tracking-[0.2em]"
+			>
+				Project / link
+			</h4>
+			<div class="group cursor-pointer">
+				<p
+					class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider mb-2"
+					id="roadmap-content-project"
+				>
+					{initial.project}
+				</p>
+				<a
+					class="text-[9px] text-roadmap-primary border-b border-roadmap-primary/30 pb-0.5 uppercase tracking-widest hover:border-roadmap-primary transition-all"
+					href={projectLinkHref}
+					target={projectLinkHref.startsWith("http") ? "_blank" : undefined}
+					rel={projectLinkHref.startsWith("http")
+						? "noopener noreferrer"
+						: undefined}
+				>
+					{projectLinkLabel}
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
