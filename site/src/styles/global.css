@@ -1,26 +1,80 @@
 @import "tailwindcss";
+
 @theme {
-    --color-primary: #0070f3;
-    --color-background-dark: #000000;
+	--color-primary: #0070f3;
+	--color-background-dark: #000000;
+	--color-roadmap-primary: var(--color-primary);
+	--color-roadmap-muted: #64748b;
+	--color-accent-muted: #006b81;
+	--color-border-muted: #1a1a1a;
 
-    --font-display: "Inter", "sans-serif"; 
+	--font-display: "Inter", sans-serif;
+	--font-roadmap-sans: "Public Sans", sans-serif;
 
-    --radius: 0.5rem; 
-    --radius-lg: 0.75rem; 
-    --radius-xl: 1rem; 
-    --radius-full: 9999px; 
+	--radius: 0.5rem;
+	--radius-lg: 0.75rem;
+	--radius-xl: 1rem;
+	--radius-full: 9999px;
 
-    @keyframes typing {
-    from { width: 0; }
-    to { width: 100%; }
-    }
+	@keyframes typing {
+		from {
+			width: 0;
+		}
+		to {
+			width: 100%;
+		}
+	}
 
-    @keyframes blink {
-    from, to { border-right-color: transparent; }
-    50% { border-right-color: orange; }
-    }
+	@keyframes blink {
+		from,
+		to {
+			border-right-color: transparent;
+		}
+		50% {
+			border-right-color: orange;
+		}
+	}
 
-    --animate-typewriter: 
-    typing 2s steps(20) forwards, 
-    blink .5s step-end infinite;
+	--animate-typewriter: typing 2s steps(20) forwards,
+		blink 0.5s step-end infinite;
+}
+
+/* Per-roadmap accent + chrome (skill pages only; landing omits data-roadmap) */
+html[data-roadmap="devops"] {
+	--color-roadmap-primary: #00d4ff;
+	--color-accent-muted: #006b81;
+	--color-border-muted: #1a1a1a;
+}
+
+html[data-roadmap="development"] {
+	--color-roadmap-primary: #38bdf8;
+	--color-accent-muted: #0ea5e9;
+	--color-border-muted: #1e293b;
+}
+
+/* Timeline node styling (mockup parity) */
+.node-glow {
+	box-shadow: 0 0 10px color-mix(in srgb, var(--color-roadmap-primary) 8%, transparent);
+}
+
+.node-glow-active {
+	box-shadow: 0 0 20px color-mix(in srgb, var(--color-roadmap-primary) 35%, transparent);
+	border-color: var(--color-roadmap-primary) !important;
+}
+
+.node-glow-active .roadmap-node-icon {
+	color: var(--color-roadmap-primary) !important;
+}
+
+.line-muted {
+	background-color: var(--color-border-muted);
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+	display: none;
+}
+
+.hide-scrollbar {
+	-ms-overflow-style: none;
+	scrollbar-width: none;
 }
