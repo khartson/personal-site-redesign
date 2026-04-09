@@ -1,39 +1,83 @@
 ---
-import Base from "../layouts/base.astro"
-import { Rocket } from "@lucide/astro";
-import { UserRound } from '@lucide/astro/icons'
+import Base from "../layouts/base.astro";
+import { CloudCog, CodeXml, Layers } from "@lucide/astro/icons";
 ---
 
-<Base title="Kyle Hartson - Welcome">
-<body class="bg-green font-display text-white antialiased overflow-x-hidden">
-<div class="relative min-h-screen flex flex-col items-center justify-center">
-<main class="relative z-10 flex flex-col items-center justify-center px-6 py-20 text-center max-w-4xl mx-auto">
-<div class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-12">
-            Mapping my development journey
-        </div>
-<h1 class="animate-typewriter overflow-hidden whitespace-nowrap text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8">
-			Hi, I'm Kyle Hartson
-        </h1>
-<p class="text-zinc-500 text-sm md:text-base max-w-md mx-auto leading-relaxed mb-16">
-            This is a minimalist map of my professional journey and technical expertise.
-        </p>
-<div class="flex flex-col sm:flex-row gap-8 justify-center w-full max-w-md">
-<button class="flex items-center justify-center gap-3 flex-1 bg-primary text-white h-14 px-8 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)]">
-<span>Explore My Skills</span>
-<Rocket class="w-6 h-6"/>
-</button>
-<button class="flex items-center justify-center gap-3 flex-1 text-zinc-400 hover:text-white h-14 px-8 rounded-full font-semibold transition-all">
-<span>Intro &amp; Socials</span>
-<UserRound class="w-6 h-6"/>
-</button>
-</div>
-</main>
-<!-- Social Links Footer -->
-<footer class="absolute bottom-12 flex gap-12 text-zinc-600 text-xs font-medium tracking-widest uppercase z-10">
-<a class="hover:text-white transition-colors" href="#">GitHub</a>
-<a class="hover:text-white transition-colors" href="#">LinkedIn</a>
-<a class="hover:text-white transition-colors" href="#">Resume</a>
-</footer>
-</div>
+<Base
+	title="Kyle Hartson — Welcome"
+	description="Kyle Hartson — full-stack and systems engineer. Explore interactive roadmaps for DevOps & infrastructure and software development, with resumes and links to GitHub and LinkedIn."
+>
+	<div class="relative min-h-screen flex flex-col items-center justify-center">
+		<header
+			class="absolute top-0 left-0 right-0 z-10 flex items-center justify-center px-6 py-12"
+		>
+			<div class="flex items-center gap-2">
+				<Layers class="text-primary w-7 h-7" aria-hidden="true" />
+				<h2 class="text-sm font-medium tracking-[0.2em] uppercase">
+					Kyle Hartson
+				</h2>
+			</div>
+		</header>
+		<main
+			class="relative z-10 flex flex-col items-center justify-center px-6 py-20 text-center max-w-4xl mx-auto"
+		>
+			<div
+				class="text-zinc-500 text-[10px] font-bold uppercase tracking-[0.3em] mb-12"
+			>
+				Mapping my development journey
+			</div>
+			<h1
+				class="animate-typewriter overflow-hidden whitespace-nowrap text-5xl md:text-7xl font-bold tracking-tight leading-tight mb-8"
+			>
+				Hi, I'm Kyle Hartson
+			</h1>
+			<p
+				class="text-zinc-500 text-sm md:text-base max-w-md mx-auto leading-relaxed mb-16"
+			>
+				This is a minimalist map of my professional journey and technical
+				expertise.
+			</p>
+			<div
+				class="flex flex-col sm:flex-row gap-8 justify-center w-full max-w-md"
+			>
+				<a
+					href="/roadmap/devops/"
+					class="flex items-center justify-center gap-3 flex-1 bg-primary text-white h-14 px-8 rounded-full font-semibold transition-all shadow-[0_0_20px_rgba(0,112,243,0.3)] hover:shadow-[0_0_30px_rgba(0,112,243,0.5)] no-underline"
+				>
+					<span>DevOps &amp; infrastructure</span>
+					<CloudCog class="w-6 h-6 shrink-0" aria-hidden="true" />
+				</a>
+				<a
+					href="/roadmap/development/"
+					class="flex items-center justify-center gap-3 flex-1 text-zinc-400 hover:text-white h-14 px-8 rounded-full font-semibold transition-all no-underline border border-transparent hover:border-white/10"
+				>
+					<span>Software development</span>
+					<CodeXml class="w-6 h-6 shrink-0" aria-hidden="true" />
+				</a>
+			</div>
+		</main>
+		<footer
+			id="socials"
+			class="absolute bottom-12 flex gap-12 text-zinc-600 text-xs font-medium tracking-widest uppercase z-10"
+		>
+			<a
+				class="hover:text-white transition-colors"
+				href="https://github.com/khartson"
+				target="_blank"
+				rel="noopener noreferrer">GitHub</a
+			>
+			<a
+				class="hover:text-white transition-colors"
+				href="https://www.linkedin.com/in/kyle-hartson/"
+				target="_blank"
+				rel="noopener noreferrer">LinkedIn</a
+			>
+			<a
+				class="hover:text-white transition-colors"
+				href="/Resume_April_2026___DevOps.pdf"
+				target="_blank"
+				rel="noopener noreferrer">Resume</a
+			>
+		</footer>
+	</div>
 </Base>
-
