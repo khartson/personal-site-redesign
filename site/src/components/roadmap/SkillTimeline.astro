@@ -1,0 +1,41 @@
+---
+import SkillNode from "./SkillNode.astro";
+
+type Node = {
+	id: string;
+	label: string;
+	subtitle: string;
+	icon: string;
+	context?: string;
+	overview: string;
+	overviewBullets?: string[];
+	professional: string;
+	project: string;
+};
+
+interface Props {
+	nodes: Node[];
+	defaultActiveId: string;
+	/** Minimum width of the timeline strip (wider when there are more nodes). */
+	minTimelineWidth?: string;
+}
+
+const { nodes, defaultActiveId, minTimelineWidth = "min-w-[760px]" } =
+	Astro.props;
+---
+
+<div class="w-full max-w-6xl overflow-x-auto pb-12 hide-scrollbar">
+	<div
+		class:list={[
+			"flex items-center justify-between px-12 relative",
+			minTimelineWidth,
+		]}
+		role="tablist"
+		aria-label="Skill progression"
+	>
+		<div class="absolute top-[40px] left-12 right-12 h-px line-muted"></div>
+		{nodes.map((node) => (
+			<SkillNode node={node} active={node.id === defaultActiveId} />
+		))}
+	</div>
+</div>

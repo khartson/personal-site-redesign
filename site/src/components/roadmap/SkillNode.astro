@@ -1,0 +1,62 @@
+---
+import RoadmapIcon from "./RoadmapIcon.astro";
+
+type Node = {
+	id: string;
+	label: string;
+	subtitle: string;
+	icon: string;
+	context?: string;
+	overview: string;
+	overviewBullets?: string[];
+	professional: string;
+	project: string;
+};
+
+interface Props {
+	node: Node;
+	active: boolean;
+}
+
+const { node, active } = Astro.props;
+const overviewBulletsJson = JSON.stringify(node.overviewBullets ?? []);
+const ring = active
+	? "border-roadmap-primary node-glow-active"
+	: "border-border-muted node-glow group-hover:border-roadmap-primary/50";
+const iconClass = active
+	? "roadmap-node-icon text-2xl text-roadmap-primary"
+	: "roadmap-node-icon text-2xl text-slate-500 group-hover:text-roadmap-primary/70 transition-colors";
+const titleClass = active
+	? "font-bold text-xs text-white uppercase tracking-widest"
+	: "font-bold text-xs text-slate-400 uppercase tracking-widest";
+---
+
+<button
+	type="button"
+	class:list={[
+		"skill-node flex flex-col items-center gap-8 relative z-10 group",
+		"bg-transparent border-0 p-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-roadmap-primary focus-visible:outline-offset-2",
+	]}
+	data-skill-trigger={node.id}
+	data-overview={node.overview}
+	data-overview-bullets={overviewBulletsJson}
+	data-professional={node.professional}
+	data-project={node.project}
+	data-context={node.context ?? ""}
+	aria-pressed={active ? "true" : "false"}
+	aria-label={`${node.label}: ${node.subtitle}`}
+>
+	<div
+		class:list={[
+			"size-20 rounded-full border flex items-center justify-center bg-black transition-all",
+			ring,
+		]}
+		id={`node-${node.id}`}
+	>
+		<RoadmapIcon name={node.icon} class:list={[iconClass]} aria-hidden="true" />
+	</div>
+	<div class="text-center">
+		<h3 class:list={[titleClass]}>{node.label}</h3>
+		<p class="text-[10px] text-slate-600 mt-2 uppercase">{node.subtitle}</p>
+	</div>
+</button>

@@ -1,0 +1,48 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import {
+	Terminal,
+	Layers,
+	Router,
+	CloudCog,
+	Cloud,
+	Cog,
+	Settings2,
+	ShieldCheck,
+	Fingerprint,
+	Building2,
+	LineChart,
+	Workflow,
+	CodeXml,
+	Database,
+	Wrench,
+} from "@lucide/astro/icons";
+
+const registry: Record<string, typeof Terminal> = {
+	Terminal,
+	Layers,
+	Router,
+	CloudCog,
+	Cloud,
+	Cog,
+	Settings2,
+	ShieldCheck,
+	Fingerprint,
+	Building2,
+	LineChart,
+	Workflow,
+	CodeXml,
+	Database,
+	Wrench,
+};
+
+type Props = {
+	name: string;
+	class?: string;
+} & HTMLAttributes<"svg">;
+
+const { name, class: className, ...rest } = Astro.props;
+const Icon = registry[name] ?? Terminal;
+---
+
+<Icon class:list={[className]} {...rest} />

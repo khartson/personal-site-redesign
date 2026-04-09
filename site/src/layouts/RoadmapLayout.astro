@@ -1,0 +1,105 @@
+---
+import Base from "./base.astro";
+import { Cpu, Github, Mail } from "@lucide/astro/icons";
+
+interface Props {
+	title: string;
+	description?: string;
+	theme: "devops" | "development";
+	headerName: string;
+	headerRole: string;
+	resumeLabel?: string;
+	resumeHref?: string;
+	footerTag?: string;
+}
+
+const {
+	title,
+	description,
+	theme,
+	headerName,
+	headerRole,
+	resumeLabel = "View resume",
+	resumeHref = "#",
+	footerTag = "",
+} = Astro.props;
+---
+
+<Base
+	title={title}
+	description={description}
+	dataRoadmap={theme}
+	bodyClass="bg-background-dark font-roadmap-sans text-slate-400 min-h-screen relative overflow-x-hidden"
+>
+	<div class="relative flex flex-col min-h-screen" id="roadmap-page-root">
+		<header
+			class="flex items-center justify-between px-8 py-6 border-b border-border-muted bg-black sticky top-0 z-50"
+		>
+			<div class="flex items-center gap-4">
+				<div
+					class="flex items-center justify-center size-8 border border-roadmap-primary/20 text-roadmap-primary"
+				>
+					<Cpu class="w-5 h-5" aria-hidden="true" />
+				</div>
+				<div>
+					<h2 class="text-xs font-bold tracking-[0.2em] uppercase text-white">
+						{headerName}
+					</h2>
+					<p
+						class="text-[10px] font-medium text-roadmap-primary tracking-wider uppercase"
+					>
+						{headerRole}
+					</p>
+				</div>
+			</div>
+			<div class="flex items-center gap-4">
+				<a
+					class="px-5 py-2 border border-white text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all no-underline"
+					href={resumeHref}
+					target={resumeHref.startsWith("http") ? "_blank" : undefined}
+					rel={resumeHref.startsWith("http")
+						? "noopener noreferrer"
+						: undefined}
+				>
+					{resumeLabel}
+				</a>
+				<a
+					href="/"
+					class="text-[10px] text-slate-500 hover:text-roadmap-primary uppercase tracking-widest transition-colors no-underline"
+				>
+					Home
+				</a>
+			</div>
+		</header>
+		<slot />
+		<footer
+			class="mt-auto py-12 px-8 text-center border-t border-border-muted bg-black"
+		>
+			<p class="text-slate-600 text-[10px] uppercase tracking-[0.3em]">
+				{footerTag}
+			</p>
+			<div class="flex justify-center gap-8 mt-8">
+				<a
+					class="text-slate-600 hover:text-roadmap-primary transition-colors"
+					href="mailto:kylehartson@proton.me"
+					aria-label="Email"
+				>
+					<Mail class="w-5 h-5" />
+				</a>
+				<a
+					class="text-slate-600 hover:text-roadmap-primary transition-colors"
+					href="https://github.com/khartson"
+					target="_blank"
+					rel="noopener noreferrer"
+					aria-label="GitHub"
+				>
+					<Github class="w-5 h-5" />
+				</a>
+			</div>
+		</footer>
+	</div>
+	<script>
+		import { initRoadmapTimeline } from "../scripts/roadmap-timeline.ts";
+		initRoadmapTimeline();
+	</script>
+</Base>
