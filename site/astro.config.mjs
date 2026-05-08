@@ -9,5 +9,9 @@ export default defineConfig({
     integrations: [sitemap()],
     vite: {
         plugins: [tailwindcss()],
-    }
+        build: {
+            // Keep page scripts as separate /_astro/*.js files so CSP need not allow unsafe-inline.
+            assetsInlineLimit: 0,
+        },
+    },
 });
