@@ -1,6 +1,7 @@
 ---
 import Base from "./base.astro";
-import { Cpu, Github, Mail } from "@lucide/astro/icons";
+import BrandIcon from "../components/BrandIcon.astro";
+import { Cpu, Mail } from "@lucide/astro/icons";
 
 interface Props {
 	title: string;
@@ -93,7 +94,7 @@ const {
 					rel="noopener noreferrer"
 					aria-label="GitHub"
 				>
-					<Github class="w-5 h-5" />
+					<BrandIcon name="github" class="w-5 h-5" />
 				</a>
 			</div>
 		</footer>
