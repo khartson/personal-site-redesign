@@ -78,3 +78,12 @@ html[data-roadmap="development"] {
 	-ms-overflow-style: none;
 	scrollbar-width: none;
 }
+
+@media (max-width: 639px) {
+	.animate-typewriter {
+		animation: none;
+		width: auto;
+		overflow: visible;
+		white-space: normal;
+	}
+}

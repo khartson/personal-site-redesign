@@ -31,12 +31,12 @@ const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
 ---
 
 <div
-	class="w-full max-w-3xl mt-12 transition-all duration-500 opacity-100"
+	class="mt-8 w-full max-w-3xl px-2 opacity-100 transition-all duration-500 sm:mt-12 sm:px-0"
 	id="roadmap-content-area"
 	aria-live="polite"
 >
 	<div
-		class="border-t border-border-muted pt-12 grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-12"
+		class="grid grid-cols-1 gap-8 border-t border-border-muted pt-8 md:grid-cols-3 md:gap-12 md:pt-12"
 	>
 		<div class="space-y-4">
 			<h4
