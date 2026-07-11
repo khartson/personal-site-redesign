@@ -1,5 +1,6 @@
 ---
 import SkillNode from "./SkillNode.astro";
+import type { RoadmapSkill, SkillLink } from "../../scripts/roadmap-skill-resolve";
 
 type Node = {
 	id: string;
@@ -7,10 +8,10 @@ type Node = {
 	subtitle: string;
 	icon: string;
 	context?: string;
-	overview: string;
-	overviewBullets?: string[];
-	professional: string;
-	project: string;
+	professional?: string;
+	project?: string;
+	link?: SkillLink;
+	skills: RoadmapSkill[];
 };
 
 interface Props {

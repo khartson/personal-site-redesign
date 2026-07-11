@@ -1,5 +1,6 @@
 ---
 import RoadmapIcon from "./RoadmapIcon.astro";
+import type { RoadmapSkill, SkillLink } from "../../scripts/roadmap-skill-resolve";
 
 type Node = {
 	id: string;
@@ -7,10 +8,10 @@ type Node = {
 	subtitle: string;
 	icon: string;
 	context?: string;
-	overview: string;
-	overviewBullets?: string[];
-	professional: string;
-	project: string;
+	professional?: string;
+	project?: string;
+	link?: SkillLink;
+	skills: RoadmapSkill[];
 };
 
 interface Props {
@@ -19,7 +20,7 @@ interface Props {
 }
 
 const { node, active } = Astro.props;
-const overviewBulletsJson = JSON.stringify(node.overviewBullets ?? []);
+const skillsJson = JSON.stringify(node.skills);
 const ring = active
 	? "border-roadmap-primary node-glow-active"
 	: "border-border-muted node-glow group-hover:border-roadmap-primary/50";
@@ -38,10 +39,11 @@ const titleClass = active
 		"bg-transparent border-0 p-0 cursor-pointer focus-visible:outline focus-visible:outline-2 focus-visible:outline-roadmap-primary focus-visible:outline-offset-2",
 	]}
 	data-skill-trigger={node.id}
-	data-overview={node.overview}
-	data-overview-bullets={overviewBulletsJson}
-	data-professional={node.professional}
-	data-project={node.project}
+	data-skills={skillsJson}
+	data-professional={node.professional ?? ""}
+	data-project={node.project ?? ""}
+	data-link-label={node.link?.label ?? ""}
+	data-link-href={node.link?.href ?? ""}
 	data-context={node.context ?? ""}
 	aria-pressed={active ? "true" : "false"}
 	aria-label={`${node.label}: ${node.subtitle}`}

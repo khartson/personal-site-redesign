@@ -1,5 +1,10 @@
 ---
 import RoadmapOverviewMount from "./RoadmapOverviewMount.astro";
+import {
+	resolveSkillDetails,
+	type RoadmapSkill,
+	type SkillLink,
+} from "../../scripts/roadmap-skill-resolve";
 
 type Node = {
 	id: string;
@@ -7,10 +12,10 @@ type Node = {
 	subtitle: string;
 	icon: string;
 	context?: string;
-	overview: string;
-	overviewBullets?: string[];
-	professional: string;
-	project: string;
+	professional?: string;
+	project?: string;
+	link?: SkillLink;
+	skills: RoadmapSkill[];
 };
 
 interface Props {
@@ -28,12 +33,26 @@ const {
 } = Astro.props;
 
 const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
+const initialSkill = initial.skills[0]!;
+const resolved = resolveSkillDetails(initialSkill, {
+	professional: initial.professional,
+	project: initial.project,
+	link:
+		initial.link ??
+		(projectLinkHref && projectLinkHref !== "#"
+			? { label: projectLinkLabel, href: projectLinkHref }
+			: undefined),
+});
 ---
 
 <div
 	class="mt-8 w-full max-w-3xl px-2 opacity-100 transition-all duration-500 sm:mt-12 sm:px-0"
 	id="roadmap-content-area"
 	aria-live="polite"
+	data-node-professional={initial.professional ?? ""}
+	data-node-project={initial.project ?? ""}
+	data-node-link-label={initial.link?.label ?? projectLinkLabel}
+	data-node-link-href={initial.link?.href ?? projectLinkHref}
 >
 	<div
 		class="grid grid-cols-1 gap-8 border-t border-border-muted pt-8 md:grid-cols-3 md:gap-12 md:pt-12"
@@ -44,10 +63,7 @@ const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
 			>
 				General overview
 			</h4>
-			<RoadmapOverviewMount
-				overview={initial.overview}
-				overviewBullets={initial.overviewBullets}
-			/>
+			<RoadmapOverviewMount skills={initial.skills} activeIndex={0} />
 			<p
 				id="roadmap-content-context"
 				class:list={[
@@ -68,7 +84,7 @@ const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
 				class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider"
 				id="roadmap-content-professional"
 			>
-				{initial.professional}
+				{resolved.professional}
 			</p>
 		</div>
 		<div class="space-y-4">
@@ -77,22 +93,37 @@ const initial = nodes.find((n) => n.id === defaultActiveId) ?? nodes[0]!;
 			>
 				Project / link
 			</h4>
-			<div class="group cursor-pointer">
+			<div>
 				<p
-					class="text-xs text-slate-500 leading-relaxed uppercase tracking-wider mb-2"
+					class:list={[
+						"text-xs text-slate-500 leading-relaxed uppercase tracking-wider mb-2",
+						!resolved.showProject && "hidden",
+					]}
 					id="roadmap-content-project"
 				>
-					{initial.project}
+					{resolved.project}
 				</p>
 				<a
-					class="text-[9px] text-roadmap-primary border-b border-roadmap-primary/30 pb-0.5 uppercase tracking-widest hover:border-roadmap-primary transition-all"
-					href={projectLinkHref}
-					target={projectLinkHref.startsWith("http") ? "_blank" : undefined}
-					rel={projectLinkHref.startsWith("http")
-						? "noopener noreferrer"
-						: undefined}
+					id="roadmap-content-project-link"
+					class:list={[
+						"text-[9px] text-roadmap-primary border-b border-roadmap-primary/30 pb-0.5 uppercase tracking-widest hover:border-roadmap-primary transition-all",
+						!resolved.showLink && "hidden",
+					]}
+					href={resolved.showLink ? resolved.linkHref : undefined}
+					target={
+						resolved.showLink && resolved.linkHref.startsWith("http")
+							? "_blank"
+							: undefined
+					}
+					rel={
+						resolved.showLink && resolved.linkHref.startsWith("http")
+							? "noopener noreferrer"
+							: undefined
+					}
+					aria-hidden={!resolved.showLink ? "true" : undefined}
+					tabindex={!resolved.showLink ? -1 : undefined}
 				>
-					{projectLinkLabel}
+					{resolved.linkLabel}
 				</a>
 			</div>
 		</div>
