@@ -1,24 +1,32 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
-const roadmapNodeSchema = z
-	.object({
-		id: z.string(),
-		label: z.string(),
-		subtitle: z.string(),
-		icon: z.string(),
-		context: z.string().optional(),
-		overview: z.string().default(""),
-		overviewBullets: z.array(z.string()).optional(),
-		professional: z.string(),
-		project: z.string(),
-	})
-	.refine(
-		(n) =>
-			n.overview.trim().length > 0 ||
-			(n.overviewBullets != null && n.overviewBullets.length > 0),
-		{ message: "Each node needs overview or overviewBullets", path: ["overview"] },
-	);
+const skillLinkSchema = z.object({
+	label: z.string().optional(),
+	href: z.string(),
+});
+
+const roadmapSkillSchema = z.object({
+	label: z.string(),
+	professional: z.string().optional(),
+	project: z.string().optional(),
+	link: skillLinkSchema.optional(),
+});
+
+const roadmapNodeSchema = z.object({
+	id: z.string(),
+	label: z.string(),
+	subtitle: z.string(),
+	icon: z.string(),
+	context: z.string().optional(),
+	/** Fallback when a skill omits professional. */
+	professional: z.string().optional(),
+	/** Fallback when a skill omits project. */
+	project: z.string().optional(),
+	/** Fallback link when a skill omits link. */
+	link: skillLinkSchema.optional(),
+	skills: z.array(roadmapSkillSchema).min(1),
+});
 
 const roadmaps = defineCollection({
 	loader: glob({ pattern: "**/*.md", base: "./src/content/roadmaps" }),

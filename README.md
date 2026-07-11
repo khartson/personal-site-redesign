@@ -6,7 +6,7 @@
 - Hosted on [CloudFlare Pages](https://pages.cloudflare.com)
 - Secured by [Aikido](https://app.aikido.dev) and [Sonar Cloud](https://sonarcloud.io)
 - Designed with [Google Stitch](https://stitch.withgoogle.com)
-- Implemented with [Cursor](https://cursor.com) and (GitHub Copilot)[https://github.com/features/copilot]
+- Implemented with [Cursor](https://cursor.com) and [GitHub Copilot](https://github.com/features/copilot)
 - Run on [astro.js](https://astro.build)
 
 
