@@ -2,7 +2,7 @@
 title: "Software development"
 pageTitle: "Software development | Kyle Hartson"
 headline: "Full-stack software engineering"
-subheadline: "Five pillars from my software resume"
+subheadline: "Five domains from my software resume"
 headerName: "Kyle Hartson"
 headerRole: "Full-stack software engineer"
 resumeLabel: "View resume"
@@ -134,7 +134,7 @@ nodes:
         project: kylehartson.dev - deployed via Cloudflare static workers.
 
   - id: databases
-    label: Databases and Storage Solutions
+    label: Databases and Storage
     subtitle: "Relational and Cloud Storage"
     icon: Database
     context: "Propela · Eurofins · Digital Graphene"
