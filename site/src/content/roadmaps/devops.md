@@ -18,8 +18,10 @@ nodes:
     context: "Eurofins · Digital Graphene · Propela · homelab"
     skills:
       - label: "Kubernetes"
-        professional: "Managed and troubleshot deployments on Azure Kubernetes Services at Eurofins"
-        project: Project K8s - a homelab experiment to run a multi-node K8s cluster on ProxMox with Talos Linux, ArgoCD and Gitea 
+        professional: "Managed and troubleshot production deployments on Azure Kubernetes Service at Eurofins."
+        project: "Provisioned a multi-node Talos Linux cluster on Proxmox with Terraform, then operated it declaratively with Argo CD, Cilium, Longhorn, and Sealed Secrets."
+        link:
+          href: https://github.com/khartson/project-k8s-gitops
 
       - label: "Serverless — AWS Lambda, Azure Functions, Azure Storage, Amazon S3"
         professional: "Leveraged serverless workloads to deploy data integration solutions at Propela. Developed serverless solutions at Digital Graphene"
@@ -32,9 +34,9 @@ nodes:
         link:
           href: https://github.com/khartson/personal-site-redesign
 
-      - label: "Bare Metal - ProxMox, Linux"
-        professional: "Managed bare-metal personal projects across Linux installations and ProxMox virtualized environments"
-        project: "A writeup of some of my ProxMox deployments"
+      - label: "Bare Metal - Proxmox, Linux"
+        professional: "Managed bare-metal personal projects across Linux installations and Proxmox virtualized environments."
+        project: "A writeup of some of my Proxmox deployments"
         link:
           href: https://khartson.github.io/posts/homelab-setup/
 
@@ -52,7 +54,7 @@ nodes:
         professional: "Deployed EC2, ECS and Lambda services at Propela."
 
       - label: "Proxmox"
-        project: "Homelab; manage both container and virtualized resources across a multi-node PVE cluster."
+        project: "Homelab platform for Linux containers, virtual machines, and a Terraform-provisioned Talos Kubernetes cluster."
 
       - label: "Docker and multi-service deployments"
         professional: "Container platforms and multi-service deployments spanning production cloud and lab environments."
@@ -67,7 +69,7 @@ nodes:
     skills:
       - label: "Terraform and Ansible"
         professional: "Led Terraform provisioning at Digital Graphene; Ansible for configuration and lifecycle automation."
-        project: "Terraform plus Ansible pipeline for Proxmox LXC lifecycle and Tailnet node authorization."
+        project: "Terraform provisioning for Proxmox LXC resources and Talos Kubernetes nodes, plus Ansible lifecycle automation and Tailnet authorization."
 
       - label: "CI/CD Patterns: GitHub Actions, Azure Pipelines"
         professional: "Implemented deployment and security configurations in Azure and GitHub workers."
@@ -82,7 +84,14 @@ nodes:
           href: https://github.com/khartson/dotfiles
       
       - label: "GitOps"
-        project: "Integrated self-hosted Gitea instance with a ProxMox-hosted Talos K8s cluster to drive declarative GitOps"
+        project: "Argo CD application-of-applications workflow for a Proxmox-hosted Talos cluster, including Cilium, Longhorn, Sealed Secrets, monitoring, and the BeerBot workload."
+        link:
+          href: https://github.com/khartson/project-k8s-gitops
+
+      - label: "Kubernetes workload delivery"
+        project: "BeerBot is published to GHCR and deployed through Argo CD with health probes, a Longhorn-backed SQLite store, sealed credentials, and a nightly CronJob that exports new Discord messages and triggers in-cluster model retraining."
+        link:
+          href: https://github.com/khartson/BeerBot
 
   - id: security
     label: Security
@@ -108,23 +117,28 @@ nodes:
           href: https://khartson.github.io/posts/homelab-setup/
       
       - label: Threat Modeling and Research
-        professional: "Participated in threat modeling and developer education platform proof of concept in conjunction with enteprise security teams at Eurofins." 
+        professional: "Participated in threat modeling and a developer education platform proof of concept with enterprise security teams at Eurofins."
 
   - id: monitoring
     label: Monitoring
     subtitle: "Pipelines & signals"
     icon: LineChart
-    context: "Root Integrated Systems"
-    professional: "Expanded observability pipelines for distributed hardware and operational reliability."
+    context: "Root Integrated Systems · homelab"
+    professional: "Expanded observability pipelines for distributed hardware and built Kubernetes monitoring for the Talos homelab."
     skills:
       - label: "Splunk — ingestion, search, dashboards"
         professional: "Expanded Splunk pipelines for real-time monitoring of distributed hardware (Root Integrated Systems)."
 
       - label: "Sentry - Application-level Observability"
 
+      - label: "Prometheus and Grafana — Kubernetes observability"
+        project: "Deployed kube-prometheus-stack through Argo CD and exposed Grafana and Prometheus privately through Tailscale ingress."
+        link:
+          href: https://github.com/khartson/project-k8s-gitops
+
       - label: "Node-RED — pipelines and quick integrations"
         professional: "Node-RED pipelines and quick integrations for monitoring and operational workflows (Root)."
 
       - label: "Investigative logging for reliability"
-        project: "Observability work pairing investigative logging with automation-driven environments."
+        project: "Observability work pairing investigative logging with automation-driven environments, from production Splunk pipelines to Prometheus and Grafana in the Talos lab."
 ---
