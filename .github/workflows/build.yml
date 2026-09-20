@@ -17,11 +17,25 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # 6.0.3
-        with:
-          fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+    - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # 6.0.3
+      with:
+        fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4.4.0
+      with:
+        node-version: 24
+        cache: npm
+        cache-dependency-path: site/package-lock.json
+
+    - name: Install dependencies
+      working-directory: site
+      run: npm ci
+
+    - name: Test and coverage
+      working-directory: site
+      run: npm run test:coverage
+
+    - name: SonarQube Scan
+      uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995 # v8.1.0
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
